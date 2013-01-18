@@ -10,7 +10,7 @@ int main()
 	variant2();	
 	variant3();
 	System("PAUSE");
-`	return 0;	
+	return 0;	
 }
 
 void variant1()
