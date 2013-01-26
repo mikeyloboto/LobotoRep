@@ -7,6 +7,17 @@ namespace MedievalGame
 {
     class Item
     {
+        public static Item itemFish = new Items.ItemFish();
+        public static Item itemMeat = new Items.ItemMeat();
+        public static Item itemCookedFish = new Items.ItemCookedFish();
+        public static Item itemEmptySlot = new Items.ItemEmptySlot();
+        public static void InitAllItems()
+        {
+            itemFish.initItem(1, "Fish");
+            itemMeat.initItem(2, "Meat");
+            itemCookedFish.initItem(3, "Cooked Fish");
+            itemEmptySlot.initItem(0, "Empty Slot");
+        }
         public int ItemId, ItemMeta;
         public String ItemName;
         public void initItem(int par1, int par2)

@@ -26,6 +26,7 @@ namespace MedievalGame
         }
         public String disassemleString(string input)
         {
+            string inpLower = input.ToLower();
             Boolean var1 = false;
             Boolean var2 = false;
             Boolean var3 = false;
@@ -34,21 +35,26 @@ namespace MedievalGame
             Boolean var6 = false;
             Boolean var7 = false;
             Boolean var8 = false;
+            Boolean var9 = false;
 
             if (input.Length > 1)
             {
-                var1 = (input.Substring(0, 2) == "go") || (input.Substring(0, 2) == "Go");
+                var1 = (inpLower.Substring(0, 2) == "go");
             }
-            var2 = (input == "map") || (input == "Map") || (input == "show map") || (input == "Show map") || (input == "open map") || (input == "Open map");
+            var2 = (inpLower == "map") || (inpLower == "show map") || (inpLower == "open map");
             if (input.Length > 3)
             {
-                var3 = (input.Substring(0, 4) == "move") || (input.Substring(0, 4) == "Move");
+                var3 = (inpLower.Substring(0, 4) == "move");
             }
-            var4 = ((input == "Inventory") || (input == "inventory") || (input == "Open inventory") || (input == "open inventory") || (input == "Show inventory") || (input == "show inventory"));
-            var5 = (input == "look around") || (input == "Look around");
-            var6 = (input == "time") || (input == "Time") || (input == "Calendar") || (input == "calendar");
-            var7 = (input == "compass") || (input == "Compass");
-            var8 = (input == "Use compass") || (input == "use compass");
+            if (inpLower.Length > 4)
+            {
+                var8 = (inpLower.Substring(0, 4) == "cook");
+            }
+            var4 = (inpLower == "inventory") || (inpLower == "open inventory") || (inpLower == "show inventory");
+            var5 = (inpLower == "look around");
+            var6 = (inpLower == "time") || (inpLower == "calendar");
+            var7 = (inpLower == "compass") || (inpLower == "use compass");
+            var9 = (inpLower == "fishing") || (inpLower == "start fishing") || (inpLower == "catch fish") || (inpLower == "fish");
             if (var1)
             {
                 Game.direction = input.Substring(3, input.Length - 3);
@@ -76,9 +82,18 @@ namespace MedievalGame
             {
                 return "time";
             }
-            if (var7 || var8)
+            if (var7)
             {
                 return "compass";
+            }
+            if (var8)
+            {
+                Game.slot = Convert.ToInt32(cutBeginning(inpLower, 4));
+                return "cook";
+            }
+            if (var9)
+            {
+                return "fish";
             }
             return "error";
 

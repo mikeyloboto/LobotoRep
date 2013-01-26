@@ -12,7 +12,7 @@ namespace MedievalGame
         public static int[,] location = new int[52, 52];
         public int time = 0;
         public int day = 0;
-        public static Map currentMap;
+        public Map currentMap;
         Thread mapThread;
         public void generateMap()
         {
@@ -532,7 +532,7 @@ namespace MedievalGame
         {
             return location[par1, par2];
         }
-        public static void windowedMapThread()
+        public void windowedMapThread()
         {
             currentMap = new Map();
             Application.Run(currentMap);

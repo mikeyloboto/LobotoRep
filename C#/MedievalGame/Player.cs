@@ -38,5 +38,17 @@ namespace MedievalGame
         {
             par2.inventory[par1].initItem(0, "Empty Slot");
         }
+        public void giveItem(Item par1)
+        {
+            for (int i = 1; i < 21; i++)
+            {
+                if (inventory[i].ItemId == 0)
+                {
+                    inventory[i] = par1;
+                    break;
+                }
+
+            }
+        }
     }
 }
